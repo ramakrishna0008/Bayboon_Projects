@@ -7,11 +7,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class ConsumerSignUP {
 static WebDriver driver;
-	
 
-	
-	public static void main(String[] args) {
-	//public void signUp(){	
+	public void signUp(){	
 		try{
 						
 			System.setProperty("webdriver.gecko.driver", "F:\\SELENIUM\\geckodriver.exe");
