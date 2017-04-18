@@ -1,11 +1,21 @@
 package core;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.server.handler.GetElementAttribute;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+
+import com.gargoylesoftware.htmlunit.javascript.host.file.File;
 
 import utilities.MyTestNGListener;
 import utilities.XML_Reader;
@@ -45,13 +55,76 @@ public class BaseClass extends MyTestNGListener {
 			driver = new FirefoxDriver();
 			driver.get(URL);
 			break;
+		case "ie":
+			System.setProperty("webdriver.ie.driver","path");
+			driver = new InternetExplorerDriver();
+			driver.get(URL);
+			break;
 			
 		default:
+			System.out.println(browser+"Browser is not supported yet");
 			break;
+		}
+		//click_Sign();
+		
+	}
+	@AfterSuite
+	public void teardown(){
+		By logout = By.id("logout");
+		try {
+			driver.findElement(logout).click();
+			driver.quit();
+		} catch (Exception e) {
+			driver.quit();
+			
 		}
 		
 	}
 
+	public static String getBrowser() throws IOException{
+		File input = new File("F:\\Github\\Bayboon_Projects\\BayBoon\\src\\test\\resources\\AppConfig.properties");
+		FileInputStream fis = new FileInputStream(input);
+		Properties prop = new Properties();
+		prop.load(fis);
+		String browser = prop.getProperty("browser").toString();
+		return browser;
+		
+	}
+	public static String getEnvironment() throws IOException{
+		File input = new File("F:\\Github\\Bayboon_Projects\\BayBoon\\src\\test\\resources\\AppConfig.properties");
+		FileInputStream fis = new FileInputStream(input);
+		Properties prop = new Properties();
+		prop.load(fis);
+		String environment = prop.getProperty("environment").toString();
+		return environment;
+		
+	}
+	public static String getURL() throws IOException{
+		File input = new File("F:\\Github\\Bayboon_Projects\\BayBoon\\src\\test\\resources\\AppConfig.properties");
+		FileInputStream fis = new FileInputStream(input);
+		Properties prop = new Properties();
+		prop.load(fis);
+		String URL = prop.getProperty("BaseURL").toString();
+		return URL;
+		
+	}
+	public static String getAuthentication() throws IOException{
+		File input = new File("F:\\Github\\Bayboon_Projects\\BayBoon\\src\\test\\resources\\AppConfig.properties");
+		FileInputStream fis = new FileInputStream(input);
+		Properties prop = new Properties();
+		prop.load(fis);
+		String auth = prop.getProperty("auth").toString();
+		return auth;
+		
+	}
+	public void click_Signin(){
+		By btnSignIn = By.linkText("SignIn");
+		if(auth.equalsIgnoreCase("QA"))
+			driver.findElement(btnSignIn).click();
+	}
 	
-	
+	public static void waitForVisibility(By WebElement, int time){
+		WebDriverWait wait = new WebDriverWait(driver, time);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(WebElement));
+	}
 }
