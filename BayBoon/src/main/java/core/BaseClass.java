@@ -2,6 +2,7 @@ package core;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
@@ -27,9 +28,15 @@ public class BaseClass extends MyTestNGListener {
 	public String auth = null;
 	public String URL = null;
 	public String envi = null;
+<<<<<<< HEAD
 	public static String BASE_URL = "E:\\seleinium_software\\software\\";
 	//public static String BASE_URL = "E:\\seleinium_software\\software\\geckodriver.exe";
 	//import  code\
+=======
+	
+	public static String BaseUrl = "F:\\SELENIUM\\Softwares\\";
+	//import  code
+>>>>>>> origin/master
 	@BeforeSuite
 	public void setUp(Object webdriver) throws Exception{
 		/*auth = getauthentication();
@@ -48,17 +55,25 @@ public class BaseClass extends MyTestNGListener {
 		case "chrome":
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("start-maximised");
+<<<<<<< HEAD
 			System.setProperty("webdriver.chrome.driver",BASE_URL+"chromedriver.exe");
+=======
+			System.setProperty("webdriver.chrome.driver",BaseUrl+"chromedriver.exe");
+>>>>>>> origin/master
 			driver = new ChromeDriver(options);
 			driver.get(URL);
 			break;
 		case "firefox":
+<<<<<<< HEAD
 			System.setProperty("webdriver.firefox.driver",BASE_URL+"geckodriver.exe");
+=======
+			System.setProperty("webdriver.firefox.driver",BaseUrl+"geckodriver.exe");
+>>>>>>> origin/master
 			driver = new FirefoxDriver();
 			driver.get(URL);
 			break;
 		case "ie":
-			System.setProperty("webdriver.ie.driver","path");
+			System.setProperty("webdriver.ie.driver",BaseUrl+"path");
 			driver = new InternetExplorerDriver();
 			driver.get(URL);
 			break;
@@ -84,7 +99,9 @@ public class BaseClass extends MyTestNGListener {
 	}
 
 	public static String getBrowser() throws IOException{
-		File input = new File("F:\\Github\\Bayboon_Projects\\BayBoon\\src\\test\\resources\\AppConfig.properties");
+		File input = new File("F:\\Github\\Bayboon_Projects\\BayBoon\\src\\test\\resources\\AppConfig");
+		//File input = new File(BaseUrl+"AppConfig.properties");
+		
 		FileInputStream fis = new FileInputStream(input);
 		Properties prop = new Properties();
 		prop.load(fis);

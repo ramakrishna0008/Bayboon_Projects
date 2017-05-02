@@ -6,11 +6,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class ConsumerSignin {
 	static WebDriver driver;
+	public static String BaseUrl = "F:\\SELENIUM\\Softwares\\";
 	//public static void main(String[] args) {
 	public void signIn(){
 		try{
 				
-		System.setProperty("webdriver.gecko.driver", "F:\\SELENIUM\\geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver",BaseUrl+ "geckodriver.exe");
 		driver = new FirefoxDriver();
 		driver.get("https://www.bayboon.com/consumer/");
 		driver.manage().window().maximize();
