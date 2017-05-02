@@ -15,16 +15,20 @@ public class TestConsumerSignin {
 		driver = new FirefoxDriver();
 		driver.get("https://test.groupzeal.com/");
 		driver.manage().window().maximize();
-		//driver.findElement(By.id("signin-width")).click();
-		driver.findElement(By.xpath("//*[@id='signin-width']"));
+		driver.findElement(By.id("signin-width")).click();
+		
 		Thread.sleep(3000);
 		
 		System.out.println("clicked on Signin/SignUp link");
-		driver.findElement(By.id("userName")).clear();
-		driver.findElement(By.id("userName")).sendKeys("groupzeal11@gmail.com");
+		driver.findElement(By.xpath("//*[@id='userName']")).click();
+		driver.findElement(By.xpath("//*[@id='userName']")).sendKeys("groupzeal11@gmail.com");
+		/*driver.findElement(By.id("userName")).clear();
+		driver.findElement(By.id("userName")).sendKeys("groupzeal11@gmail.com");*/
 		System.out.println("entered Username");
-		driver.findElement(By.id("passwords")).clear();
-		driver.findElement(By.id("passwords")).sendKeys("group123");
+		driver.findElement(By.xpath("//*[@id='passwords']")).click();
+		driver.findElement(By.xpath("//*[@id='passwords']")).sendKeys("group123");
+		/*driver.findElement(By.id("passwords")).clear();
+		driver.findElement(By.id("passwords")).sendKeys("group123");*/
 		System.out.println("entered Password");
 		Thread.sleep(1000);
 		//driver.findElement(By.xpath("id('home')/x:form/x:div[3]/x:div/x:div/x:button")).click();
