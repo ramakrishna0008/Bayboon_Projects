@@ -2,6 +2,7 @@ package core;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
@@ -27,6 +28,8 @@ public class BaseClass extends MyTestNGListener {
 	public String auth = null;
 	public String URL = null;
 	public String envi = null;
+	
+	public static String BaseUrl = "F:\\SELENIUM\\Softwares\\";
 	//import  code
 	@BeforeSuite
 	public void setUp(Object webdriver) throws Exception{
@@ -46,17 +49,17 @@ public class BaseClass extends MyTestNGListener {
 		case "chrome":
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("start-maximised");
-			System.setProperty("webdriver.chrome.driver","F:\\SELENIUM\\chromedriver_win32\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver",BaseUrl+"chromedriver.exe");
 			driver = new ChromeDriver(options);
 			driver.get(URL);
 			break;
 		case "firefox":
-			System.setProperty("webdriver.firefox.driver","F:\\SELENIUM\\geckodriver.exe");
+			System.setProperty("webdriver.firefox.driver",BaseUrl+"geckodriver.exe");
 			driver = new FirefoxDriver();
 			driver.get(URL);
 			break;
 		case "ie":
-			System.setProperty("webdriver.ie.driver","path");
+			System.setProperty("webdriver.ie.driver",BaseUrl+"path");
 			driver = new InternetExplorerDriver();
 			driver.get(URL);
 			break;
@@ -82,7 +85,9 @@ public class BaseClass extends MyTestNGListener {
 	}
 
 	public static String getBrowser() throws IOException{
-		File input = new File("F:\\Github\\Bayboon_Projects\\BayBoon\\src\\test\\resources\\AppConfig.properties");
+		File input = new File("F:\\Github\\Bayboon_Projects\\BayBoon\\src\\test\\resources\\AppConfig");
+		//File input = new File(BaseUrl+"AppConfig.properties");
+		InputStream f = new FileInputStream(input);
 		FileInputStream fis = new FileInputStream(input);
 		Properties prop = new Properties();
 		prop.load(fis);
