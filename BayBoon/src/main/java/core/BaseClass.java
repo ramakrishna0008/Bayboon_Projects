@@ -87,7 +87,7 @@ public class BaseClass extends MyTestNGListener {
 	public static String getBrowser() throws IOException{
 		File input = new File("F:\\Github\\Bayboon_Projects\\BayBoon\\src\\test\\resources\\AppConfig");
 		//File input = new File(BaseUrl+"AppConfig.properties");
-		InputStream f = new FileInputStream(input);
+		
 		FileInputStream fis = new FileInputStream(input);
 		Properties prop = new Properties();
 		prop.load(fis);
