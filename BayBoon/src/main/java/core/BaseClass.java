@@ -27,7 +27,9 @@ public class BaseClass extends MyTestNGListener {
 	public String auth = null;
 	public String URL = null;
 	public String envi = null;
-	//import  code
+	public static String BASE_URL = "E:\\seleinium_software\\software\\";
+	//public static String BASE_URL = "E:\\seleinium_software\\software\\geckodriver.exe";
+	//import  code\
 	@BeforeSuite
 	public void setUp(Object webdriver) throws Exception{
 		/*auth = getauthentication();
@@ -46,12 +48,12 @@ public class BaseClass extends MyTestNGListener {
 		case "chrome":
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("start-maximised");
-			System.setProperty("webdriver.chrome.driver","F:\\SELENIUM\\chromedriver_win32\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver",BASE_URL+"chromedriver.exe");
 			driver = new ChromeDriver(options);
 			driver.get(URL);
 			break;
 		case "firefox":
-			System.setProperty("webdriver.firefox.driver","F:\\SELENIUM\\geckodriver.exe");
+			System.setProperty("webdriver.firefox.driver",BASE_URL+"geckodriver.exe");
 			driver = new FirefoxDriver();
 			driver.get(URL);
 			break;

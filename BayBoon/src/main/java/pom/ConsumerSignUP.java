@@ -11,7 +11,7 @@ static WebDriver driver;
 	public void signUp(){	
 		try{
 						
-			System.setProperty("webdriver.gecko.driver", "F:\\SELENIUM\\geckodriver.exe");
+			System.setProperty("webdriver.gecko.driver", "E:\\seleinium_software\\software\\geckodriver.exe");
 			driver = new FirefoxDriver();
 			driver.get("https://www.bayboon.com/consumer/");
 			driver.manage().window().maximize();
