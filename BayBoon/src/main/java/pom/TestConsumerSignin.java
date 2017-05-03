@@ -6,12 +6,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class TestConsumerSignin {
 	static WebDriver driver;
-	public static String BaseUrl = "F:\\SELENIUM\\Softwares\\";
+	public static String BASE_URL = "E:\\seleinium_software\\software\\";
 	//public static void main(String[] args) {
 	public void signIn(){
 		try{
 				
-		System.setProperty("webdriver.gecko.driver",BaseUrl+ "geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver",BASE_URL+ "geckodriver.exe");
 		driver = new FirefoxDriver();
 		driver.get("https://test.groupzeal.com/");
 		driver.manage().window().maximize();
