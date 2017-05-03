@@ -28,16 +28,15 @@ public class BaseClass extends MyTestNGListener {
 	public String auth = null;
 	public String URL = null;
 	public String envi = null;
-<<<<<<< HEAD
+
 	public static String BASE_URL = "E:\\seleinium_software\\software\\";
 	//public static String BASE_URL = "E:\\seleinium_software\\software\\geckodriver.exe";
 	//import  code\
-=======
+
 	
 	public static String BaseUrl = "F:\\SELENIUM\\Softwares\\";
 	//import  code
->>>>>>> origin/master
-	@BeforeSuite
+
 	public void setUp(Object webdriver) throws Exception{
 		/*auth = getauthentication();
 		System.out.println("Authentication is via " + auth);*/
@@ -55,20 +54,14 @@ public class BaseClass extends MyTestNGListener {
 		case "chrome":
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("start-maximised");
-<<<<<<< HEAD
-			System.setProperty("webdriver.chrome.driver",BASE_URL+"chromedriver.exe");
-=======
 			System.setProperty("webdriver.chrome.driver",BaseUrl+"chromedriver.exe");
->>>>>>> origin/master
+
 			driver = new ChromeDriver(options);
 			driver.get(URL);
 			break;
 		case "firefox":
-<<<<<<< HEAD
-			System.setProperty("webdriver.firefox.driver",BASE_URL+"geckodriver.exe");
-=======
 			System.setProperty("webdriver.firefox.driver",BaseUrl+"geckodriver.exe");
->>>>>>> origin/master
+
 			driver = new FirefoxDriver();
 			driver.get(URL);
 			break;
@@ -85,7 +78,7 @@ public class BaseClass extends MyTestNGListener {
 		//click_Sign();
 		
 	}
-	@AfterSuite
+	
 	public void teardown(){
 		By logout = By.id("logout");
 		try {
